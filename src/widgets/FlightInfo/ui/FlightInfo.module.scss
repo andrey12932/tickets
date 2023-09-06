@@ -1,0 +1,22 @@
+.time {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.city {
+    font-size: 24px;
+}
+
+.date {
+    font-size: 20px;
+}
+
+.item {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 10px;
+}
+
+.justify-right {
+    justify-items: right;
+}

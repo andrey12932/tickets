@@ -1,0 +1,9 @@
+.logo {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    &__item {
+        max-width: 100%;
+    }
+}

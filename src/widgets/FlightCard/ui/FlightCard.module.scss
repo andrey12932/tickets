@@ -1,0 +1,70 @@
+.FlightCard {
+    display: grid;
+    background-color: var(--bg-card);
+    grid-template-columns: 1fr 3fr;
+    border-radius: 15px;
+    padding: 20px;
+    height: 200px;
+}
+
+.left {
+    display: grid;
+    align-content: center;
+    row-gap: 15px;
+    border-right: 1px rgba(0, 0, 0, 10%) solid;
+    padding-right: 30px;
+    max-height: 160px;
+}
+
+.right {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 30px;
+}
+
+.stops {
+    width: 100%;
+    text-align: center;
+}
+
+.plane {
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column;
+    text-align: center;
+    height: 10px;
+    width: 100%;
+    grid-template-columns: 30px auto 30px;
+    position: relative;
+
+    &__icon {
+        display: grid;
+        align-items: center;
+        position: absolute;
+        left: 0;
+    }
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #999;
+    grid-column: 2/3;
+}
+
+.animate {
+    animation-name: fly;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.88,-0.43, 0.29, 0.94);
+    animation-fill-mode: forwards;
+}
+
+@keyframes fly {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: calc(100% - 30px);
+    }
+}

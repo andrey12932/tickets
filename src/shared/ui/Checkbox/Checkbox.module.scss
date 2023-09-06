@@ -1,0 +1,84 @@
+.Checkbox {
+
+}
+
+.inputContainer {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+/* The container */
+.checkbox {
+    display: grid;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    align-items: center;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox--tick {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* On mouse-over */
+.checkbox:hover input ~ .checkbox--tick {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+}
+
+/* When the checkbox is checked */
+.checkbox input:checked ~ .checkbox--tick {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+}
+
+/* The "tick" (hidden when not checked) */
+.checkbox--tick:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transition: all 0.2s ease;
+}
+
+/* Show the tick when checked */
+.checkbox input:checked ~ .checkbox--tick:after {
+    display: block;
+}
+
+/* Style the tick */
+.checkbox .checkbox--tick:after {
+    left: calc(50% - 3px);
+    top: calc(50% - 6px);
+    width: 4px;
+    height: 7px;
+    border: solid var(--secondary-color);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
