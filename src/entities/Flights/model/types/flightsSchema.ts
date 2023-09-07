@@ -2,8 +2,6 @@ import {companyNames} from "shared/ui/CompanyLogo/CompanyLogo";
 
 export interface FlightsSchema {
     tickets: Ticket[];
-    currencies: Record<CurrencyType, number>;
-    currentCurrency: CurrencyType;
     stopFilter: Array<PossibleStopFilterValues>
 }
 
@@ -21,12 +19,6 @@ export interface Ticket {
     price: number
 }
 
-export enum CurrencyType {
-    EUR = 'EUR',
-    USD = 'USD',
-    RUB = 'RUB'
-}
-
 export enum PossibleStopFilterValues {
     ALL = 'Все',
     NULL = 'Без пересадок',
@@ -35,10 +27,3 @@ export enum PossibleStopFilterValues {
     THREE = '3 пересадки'
 }
 
-
-export interface CourseI {
-    base: string
-    date: string
-    disclaimer: string
-    rates: Record<CurrencyType, number>
-}

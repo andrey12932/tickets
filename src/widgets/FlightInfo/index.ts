@@ -1,0 +1,1 @@
+import { FlightInfo } from './ui/FlightInfo';

@@ -2,7 +2,7 @@ import {ReactNode, useEffect} from "react";
 import {Provider} from "react-redux";
 import {createReduxStore} from "app/providers/StoreProvider/config/store";
 import {StateSchema} from "app/providers/StoreProvider/config/StateSchema";
-import {fetchCourse} from "entities/Flights/model/slice/FlightsSlice";
+import {fetchCourse} from "entities/Currencies/model/slice/CurrenciesSlice";
 
 interface StoreProviderProps {
     children: ReactNode;

@@ -1,9 +1,9 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Currency.module.scss';
-import {CurrencyType} from "entities/Flights/model/types/flightsSchema";
+import {CurrencyType} from "entities/Currencies/model/types/currenciesSchema";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrencies, getCurrentCurrency} from "entities/Flights/model/selectors/getCurrencies/getCurrencies";
-import {flightsActions} from "entities/Flights/model/slice/FlightsSlice";
+import { getCurrentCurrency } from "entities/Currencies/model/selectors/getCurrencies/getCurrencies";
+import { currenciesActions } from "entities/Currencies/model/slice/CurrenciesSlice";
 
 interface CurrencyProps {
     className?: string
@@ -20,7 +20,7 @@ export const Currency = (props: CurrencyProps) => {
     const currencyList = Object.keys(CurrencyType).reverse() as CurrencyType[]
 
     const changeCurrency = (select: CurrencyType) => {
-        dispatch(flightsActions.changeCurrency(select))
+        dispatch(currenciesActions.changeCurrency(select))
     }
 
     return (

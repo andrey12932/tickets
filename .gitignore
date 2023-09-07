@@ -1,7 +1,8 @@
 /node_modules/
 /.idea/.gitignore
 /.idea/i18nSettings.xml
-/public/index.html
 /.idea/modules.xml
 /.idea/test.iml
 /.idea/vcs.xml
+/build
+/.idea/tickets.iml

@@ -1,7 +1,8 @@
 .Filter {
-    background-color: #fff;
+    background-color: var(--bg-card);
     height: 50vh;
     display: grid;
     padding: 30px;
     border-radius: 15px;
+    box-shadow: var(--box-shadow);
 }

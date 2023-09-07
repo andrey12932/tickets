@@ -5,6 +5,14 @@
     border-radius: 15px;
     padding: 20px;
     height: 200px;
+    //box-shadow: inset  0calc(var(--borderWidth-thin, 1px)*-1) var(--color-border-default);
+    box-shadow: var(--box-shadow);
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: auto;
+        grid-auto-flow: row;
+        height: 400px;
+    }
 }
 
 .left {
@@ -14,6 +22,14 @@
     border-right: 1px rgba(0, 0, 0, 10%) solid;
     padding-right: 30px;
     max-height: 160px;
+
+    @media screen and (max-width: 768px) {
+        grid-row: 2 / 3;
+        border-right: none;
+        border-top: 1px rgba(0, 0, 0, 10%) solid;
+        padding-right: 0;
+        padding-top: 30px;
+    }
 }
 
 .right {

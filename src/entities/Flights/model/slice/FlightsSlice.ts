@@ -1,25 +1,11 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {CourseI, CurrencyType, FlightsSchema, PossibleStopFilterValues} from "../types/flightsSchema";
+import { createSlice} from "@reduxjs/toolkit";
+import { FlightsSchema, PossibleStopFilterValues} from "../types/flightsSchema";
 import ticks from '../../../../../tickets.json';
 
 const initialState: FlightsSchema = {
     tickets: [],
-    currencies: {
-        [CurrencyType.RUB]: 1,
-        [CurrencyType.EUR]: 0.0095,
-        [CurrencyType.USD]: 0.01
-    },
-    currentCurrency: CurrencyType.RUB,
     stopFilter: Object.values(PossibleStopFilterValues)
 }
-
-
-export const fetchCourse = createAsyncThunk('flights/currency', async (): Promise<CourseI> => {
-        const currenciesResponse = await fetch('https://www.cbr-xml-daily.ru/latest.js')
-        const currencies = await currenciesResponse.json();
-        return currencies
-    });
-
 
 export const flightsSlice = createSlice({
     name: 'flights',
@@ -27,9 +13,6 @@ export const flightsSlice = createSlice({
     reducers: {
         getAllTickets:  state => {
             state.tickets = ticks.tickets
-        },
-        changeCurrency: (state, action) => {
-            state.currentCurrency = action.payload
         },
         addStopFilterValue: (state, action) => {
             const set = new Set<PossibleStopFilterValues>(state.stopFilter);
@@ -52,15 +35,6 @@ export const flightsSlice = createSlice({
         showOnlyStopFilter: (state, action) => {
             state.stopFilter = [action.payload]
         },
-    },
-    extraReducers: (builder) => {
-        builder.addCase(fetchCourse.fulfilled, (state, action) => {
-            const currencyList = Object.keys(CurrencyType) as CurrencyType[]
-            currencyList.forEach(key => {
-                state.currencies[key] = action.payload.rates[key];
-            });
-            state.currencies[CurrencyType.RUB] = 1
-        })
     }
 })
 

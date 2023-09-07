@@ -1,6 +1,6 @@
 import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Filter.module.scss';
-import {Currency} from "widgets/Currency/ui/Currency";
+import {Currency} from "entities/Currencies/index";
 import {StopCheckboxes} from "widgets/StopCheckboxes/ui/StopCheckboxes";
 
 interface FilterProps {

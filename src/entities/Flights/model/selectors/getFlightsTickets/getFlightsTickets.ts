@@ -8,6 +8,6 @@ export const getFlightsTickets = createSelector(
     getFlights,
     getStopFilter,
     (fligths: FlightsSchema, stopFilter) =>
-        fligths.tickets.filter(value => stopFilter.includes(stopFilterValues[value.stops])
+                fligths.tickets.filter(value => stopFilter.includes(stopFilterValues[value.stops])
         )
 )

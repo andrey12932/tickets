@@ -2,19 +2,19 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './FlightCard.module.scss';
 import {CompanyLogo, companyNames} from "shared/ui/CompanyLogo/CompanyLogo";
 import {Button} from "shared/ui/Button/Button";
-import {CurrencyType, Ticket} from "entities/Flights/model/types/flightsSchema";
+import { Ticket} from "entities/Flights/model/types/flightsSchema";
 import Plane from 'shared/assets/plane.svg';
 import {FlightInfo} from "widgets/FlightInfo/ui/FlightInfo";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {pluralize} from "shared/lib/pluralize/pluralize";
-import dayjs from "dayjs";
-import 'dayjs/locale/ru'
 import {useSelector} from "react-redux";
-import {getCurrencies, getCurrentCurrency} from "entities/Flights/model/selectors/getCurrencies/getCurrencies";
+import {getCurrencies, getCurrentCurrency} from "entities/Currencies/model/selectors/getCurrencies/getCurrencies";
+import {CurrencyType} from "entities/Currencies/model/types/currenciesSchema";
 
 interface FlightCardProps {
     className?: string;
-    flight?: Ticket
+    flight?: Ticket;
+    openModal?: () => void;
 }
 
 const CurrencyIcon: Record<CurrencyType, string> = {
@@ -26,7 +26,8 @@ const CurrencyIcon: Record<CurrencyType, string> = {
 export const FlightCard = (props: FlightCardProps) => {
     const {
         className,
-        flight
+        flight,
+        openModal
     } = props;
 
     const rates = useSelector(getCurrencies);
@@ -44,7 +45,9 @@ export const FlightCard = (props: FlightCardProps) => {
         <div onMouseEnter={() => setAnimate(true)} className={classNames(cls.FlightCard, {}, [className])}>
             <div className={cls.left}>
                 <CompanyLogo companyName={companyNames[flight.carrier]} />
-                <Button>
+                <Button
+                    onClick={openModal}
+                >
                     Купить <br/> за {Math.round(price)} {CurrencyIcon[currentCurr]}
                 </Button>
             </div>
