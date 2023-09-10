@@ -25,9 +25,11 @@ export const flightsSlice = createSlice({
         },
         deleteStopFilter: (state, action) => {
             const set = new Set<PossibleStopFilterValues>(state.stopFilter);
-            set.delete(action.payload);
-            set.delete(PossibleStopFilterValues.ALL)
-            state.stopFilter = Array.from(set)
+            if (!(set.has(action.payload) && set.size === 1)) {
+                set.delete(action.payload);
+                set.delete(PossibleStopFilterValues.ALL)
+                state.stopFilter = Array.from(set)
+            }
         },
         setAllStopFilter: state => {
             state.stopFilter = Object.values(PossibleStopFilterValues);

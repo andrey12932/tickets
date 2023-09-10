@@ -2,6 +2,7 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './FlightInfo.module.scss';
 import {Ticket} from "entities/Flights/model/types/flightsSchema";
 import dayjs from "dayjs";
+import 'dayjs/locale/ru';
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 interface FlightInfoProps {
@@ -25,11 +26,11 @@ export const FlightInfo = (props: FlightInfoProps) => {
         dayjs.extend(customParseFormat)
         return dayjs(date, 'DD.MM.YY', 'ru').locale('ru').format('D MMM YYYY, dd')
     }
-    const dateWithWords = getDateWithWords(destination ? ticket.arrival_date : ticket.departure_date)
+    const dateWithWords = getDateWithWords(date)
 
     return (
         <div className={classNames(cls.item, {
-            [cls['justify-right']]: destination
+            [cls['destination']]: destination
         }, [className])}>
             <span className={cls.time}>
                 {time}

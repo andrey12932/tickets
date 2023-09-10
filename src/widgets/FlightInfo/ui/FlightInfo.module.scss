@@ -17,6 +17,10 @@
     row-gap: 10px;
 }
 
-.justify-right {
+.destination {
     justify-items: right;
+
+    @media screen and (max-width: 576px) {
+        justify-items: left;
+    }
 }

@@ -13,6 +13,10 @@
         grid-auto-flow: row;
         height: 400px;
     }
+
+    @media screen and (max-width: 576px){
+        height: 600px;
+    }
 }
 
 .left {
@@ -36,11 +40,24 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     padding: 30px;
+
+    @media screen and (max-width: 576px) {
+        grid-template-columns: 100%;
+        justify-content: center;
+        justify-items: start;
+        row-gap: 20px;
+    }
 }
 
 .stops {
     width: 100%;
     text-align: center;
+
+    @media screen and (max-width: 576px) {
+        border-top: 1px var(--border-color) solid;
+        border-bottom: 1px var(--border-color) solid;
+        padding: 10px 0;
+    }
 }
 
 .plane {

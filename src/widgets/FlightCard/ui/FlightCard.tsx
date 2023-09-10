@@ -5,11 +5,12 @@ import {Button} from "shared/ui/Button/Button";
 import { Ticket} from "entities/Flights/model/types/flightsSchema";
 import Plane from 'shared/assets/plane.svg';
 import {FlightInfo} from "widgets/FlightInfo/ui/FlightInfo";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {pluralize} from "shared/lib/pluralize/pluralize";
 import {useSelector} from "react-redux";
 import {getCurrencies, getCurrentCurrency} from "entities/Currencies/model/selectors/getCurrencies/getCurrencies";
 import {CurrencyType} from "entities/Currencies/model/types/currenciesSchema";
+import {useMediaQuery} from "react-responsive";
 
 interface FlightCardProps {
     className?: string;
@@ -35,10 +36,7 @@ export const FlightCard = (props: FlightCardProps) => {
 
     const price = flight.price * rates[currentCurr]
 
-    useEffect(() => {
-        console.log(rates[currentCurr])
-    }, [])
-
+    const isMobile = useMediaQuery({ query: '(max-width: 576px)' })
     const [animate, setAnimate] = useState(false);
 
     return (
@@ -64,12 +62,14 @@ export const FlightCard = (props: FlightCardProps) => {
                             </>
                         }
                     </span>
-                    <div className={cls.plane}>
-                        <div className={cls.line}></div>
-                        <div className={classNames(cls.plane__icon, {[cls.animate]: animate}, [])}>
-                            <Plane />
-                        </div>
-                    </div>
+                    {
+                        !isMobile ? <div className={cls.plane}>
+                            <div className={cls.line}></div>
+                            <div className={classNames(cls.plane__icon, {[cls.animate]: animate}, [])}>
+                                <Plane/>
+                            </div>
+                        </div> : ''
+                    }
                 </div>
                 <div className={cls.destination}>
                     <FlightInfo ticket={flight} destination={true}/>
